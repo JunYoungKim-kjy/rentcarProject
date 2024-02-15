@@ -15,7 +15,7 @@ public class MainController implements Controller{
 			throws ServletException, IOException {
 		String ctx = request.getContextPath();
 		System.out.println(ctx);
-		return "";
+		return "main";
 	}
 
 }

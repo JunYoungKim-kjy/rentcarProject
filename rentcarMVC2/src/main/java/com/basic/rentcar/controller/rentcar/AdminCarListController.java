@@ -25,10 +25,9 @@ public class AdminCarListController implements Controller{
 		}
 		ArrayList<RentcarVO> list = null;
 		list = RentCarDAO.getInstance().getAllCar();
-		request.setAttribute("center", "admin/carList.jsp");
+//		request.setAttribute("center", "admin/carList.jsp");
 		request.setAttribute("list", list);
-		System.out.println("여기야?");
-		return "admin/carList";
+		return "/admin/carList";
 	}
 
 }

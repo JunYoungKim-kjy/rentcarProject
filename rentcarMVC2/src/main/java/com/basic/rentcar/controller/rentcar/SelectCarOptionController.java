@@ -28,8 +28,8 @@ public class SelectCarOptionController implements Controller{
 		
 		request.setAttribute("bean", bean);
 		request.setAttribute("qty", qty);
-		request.setAttribute("center", "rentcar/carOption.jsp");
-		return "main.do";
+//		request.setAttribute("center", "rentcar/carOption.jsp");
+		return "/rentcar/carOption";
 	}
 
 }

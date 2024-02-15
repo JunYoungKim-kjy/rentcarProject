@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../commom.jsp" %>
+<%@ include file="../parts/header.jsp" %>
 <div align="center">
 
 		<form action="${ctx}/selectCarOption.do"
@@ -79,3 +79,4 @@
 	</div>
 </body>
 </html>
+<%@ include file="../parts/footer.jsp" %>

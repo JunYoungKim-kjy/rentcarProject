@@ -84,5 +84,7 @@ SELECT * FROM rentcar WHERE no=18;
 INSERT INTO carreserve( no, id, qty, dday, rday, usein, usewifi, usenavi, useseat) VALUES( 1,'qwer',3, 4, sysdate() ,1,0,0,0);
 update rentcar set total_qty =total_qty - 3 where no = 1;
 update rentcar set total_qty =total_qty + 3 where n = 1;
+update member set pw ="ggrd" where no = 6;
 
 select * from rentcar a2 ,carreserve a1  where a1.id = 'qwer' and a1.no = a2.no;
+select * from rentcar a2 ,carreserve a1  where a1.no = a2.no;

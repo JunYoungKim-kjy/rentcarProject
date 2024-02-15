@@ -26,8 +26,8 @@ public class UserInfoController implements Controller{
 		System.out.println("마이페이지 id="+id);
 		UserVO vo = UserDAO.getInstance().getVO(id);
 		request.setAttribute("vo", vo);
-		request.setAttribute("center", "user/userInfo.jsp");
-		return "user/userInfo.jsp";
+//		request.setAttribute("center", "user/userInfo.jsp");
+		return "/user/userInfo";
 		
 	}
 

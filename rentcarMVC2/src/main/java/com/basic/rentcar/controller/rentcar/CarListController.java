@@ -22,9 +22,9 @@ public class CarListController implements Controller{
 		System.out.println("category="+request.getParameter("category"));
 		if(request.getParameter("category")==null) {
 			list = RentCarDAO.getInstance().getSelectCar();
-			request.setAttribute("center", "rentcar/rentCarList.jsp");
+//			request.setAttribute("center", "rentcar/rentCarList.jsp");
 			request.setAttribute("list", list);
-			return "rentcar/rentCarList.jsp";
+			return "/rentcar/rentCarList";
 		}
 		String cate = request.getParameter("category");
 		String temp = "";
@@ -41,9 +41,9 @@ public class CarListController implements Controller{
 			}
 		}
 		request.setAttribute("temp", temp);
-		request.setAttribute("center", "rentcar/rentCarList.jsp");
 		request.setAttribute("list", list);
-		return "rentcar/rentCarList.jsp";
+//		request.setAttribute("center", "rentcar/rentCarList.jsp");
+		return "/rentcar/rentCarList";
 	}
 
 }

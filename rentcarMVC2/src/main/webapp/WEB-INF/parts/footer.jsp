@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<table>
-		<tr height="100">
-			<td align="center">
-				<hr color="red" size="3">
+	<hr color="red" size="3">
+	<p class="footer">
 				이용약관
 				이메일 무단수집거부
 				게임정보 취급(처리)방침
@@ -14,9 +12,6 @@
 				사이트맵
 				웹접근성 도움말<br />
 				배드민턴단
-				COPYRIGHTⓒ2015 SAMSUNG ELECTRO-MECHANICS, All rights reserved.
-			</td>
-		</tr>
-	</table>
+				COPYRIGHTⓒ2015 SAMSUNG ELECTRO-MECHANICS, All rights reserved.</p>
 </body>
 </html>

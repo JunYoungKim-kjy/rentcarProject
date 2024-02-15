@@ -91,8 +91,8 @@ public class ReservateCarController implements Controller {
 		request.setAttribute("useseat", useseat);
 		request.setAttribute("totalOption", totalOption);
 		request.setAttribute("bean", bean);
-		request.setAttribute("center", "rentcar/registerCar.jsp");
-		return "main.do";
+//		request.setAttribute("center", "rentcar/registerCar.jsp");
+		return "/rentcar/registerCar";
 	}
 
 }

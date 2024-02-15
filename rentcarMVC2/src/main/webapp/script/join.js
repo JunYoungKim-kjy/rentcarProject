@@ -59,13 +59,13 @@ function validCheck(form){
 }
 
 //취소 클릭시.
-document.getElementById("reset").addEventListener("click",()=>{
+document.getElementById("reset").addEventListener("click" , ()=> {
 	document.getElementById("id").removeAttribute("readonly");
 	document.getElementById("id").style.border = "";
 	check = 0;
 });
 //중복체크
-windwo.getElementById("checkId").addEventListener("click" , ()=> {
+document.getElementById("checkId").addEventListener("click" , ()=> {
 	 let id = document.getElementById("id").value.trim();
   	if(check === 1){
   		alert("이미 중복체크 하였습니다.");

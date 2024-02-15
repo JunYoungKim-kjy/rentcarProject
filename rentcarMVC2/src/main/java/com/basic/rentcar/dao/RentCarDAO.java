@@ -211,8 +211,8 @@ public class RentCarDAO {
 				v.add(bean);
 				count++;
 				
-				if (count > 2)
-					break; 
+//				if (count > 2)
+//					break; 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

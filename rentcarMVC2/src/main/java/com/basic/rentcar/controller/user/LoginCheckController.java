@@ -21,8 +21,8 @@ public class LoginCheckController implements Controller{
 		request.setCharacterEncoding("UTF-8");
 		String ctx = request.getContextPath();
 		if(request.getParameter("id")==null) {
-			request.setAttribute("center", "./user/login.jsp");
-			return "./user/login";
+//			request.setAttribute("center", "/user/login.jsp");
+			return "/user/login";
 		}
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");

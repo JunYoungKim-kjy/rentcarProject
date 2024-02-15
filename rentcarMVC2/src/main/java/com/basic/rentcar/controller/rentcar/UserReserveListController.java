@@ -27,9 +27,9 @@ public class UserReserveListController implements Controller {
 		String id = (String)session.getAttribute("log");
 		ArrayList<JoinCarViewVO> v = ReservationDAO.getInstance().getAllReserve(id);
 		request.setAttribute("v", v);
-		request.setAttribute("center", "rentcar/userReserveList.jsp");
+//		request.setAttribute("center", "rentcar/userReserveList.jsp");
 			
-		return "rentcar/userReserveList";
+		return "/rentcar/userReserveList";
 	}
 
 }

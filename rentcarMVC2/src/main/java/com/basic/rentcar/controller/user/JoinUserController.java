@@ -34,7 +34,6 @@ public class JoinUserController implements Controller{
 		String info = request.getParameter("info");
 		UserVO vo = new UserVO(id, pw, email, phone, hobby, job, age, info);
 		int check = UserDAO.getInstance().joinUser(vo);
-		System.out.println("오나요?");
 		if(check > 0) {
 			DBUtil.alert(response, "회원가입 완료","/main.do");
 			return null;

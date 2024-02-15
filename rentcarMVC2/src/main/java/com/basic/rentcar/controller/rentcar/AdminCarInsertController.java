@@ -21,8 +21,8 @@ public class AdminCarInsertController implements Controller {
 			return null;
 		}
 		//차량 등록으로 이동
-		request.setAttribute("center", "admin/insertCar.jsp");
-		return "admin/insertCar";
+//		request.setAttribute("center", "admin/insertCar.jsp");
+		return "/admin/insertCar";
 	}
 
 }

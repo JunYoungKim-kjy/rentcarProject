@@ -1,6 +1,7 @@
-/* @charset "UTF-8";
+@charset "UTF-8";
 *{
-
+	margin:0px;
+	padding:0px;
 	box-sizing: border-box;
 	text-align: center;
 }
@@ -9,33 +10,40 @@ html, body {
    width: 100%;
    height: 100%;
 } 
-         
-header{
-	background: pink;
-	opacity: 0.8;
-	font-size:18px;
-	font-weight: 600;
+body {
+  align-items: center;
+  background-color: #e9e9e9;
+  background: url("../img/pexels-torsten-dettlaff-70912.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  height: 100vh;
+  place-items: center;
 }
+#container{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+	justify-content: center;
+}
+
 
 header div :hover{
-
-	background: gray;
+	/* background: gray; */
 	color: white;
 	cursor: pointer;
-	
 }
-
 input {
 	text-align: left;
 }
-
-
 .left{
 	text-align: left;
 }
-
 tr{
 	border: 1px solid black;
 }
-
- */
+.footer{
+	color : white;
+}

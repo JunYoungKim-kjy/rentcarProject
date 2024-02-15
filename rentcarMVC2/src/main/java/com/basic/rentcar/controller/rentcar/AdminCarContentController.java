@@ -26,8 +26,7 @@ public class AdminCarContentController implements Controller{
 		RentcarVO vo = RentCarDAO.getInstance().getOneCar(no);
 		request.setAttribute("vo", vo);
 		System.out.println(vo.getsFileName());
-		request.setAttribute("center", "admin/carContent.jsp");
-		return "admin/carContent";
+		return "/admin/carContent";
 	}
 
 }

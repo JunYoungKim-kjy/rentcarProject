@@ -37,9 +37,9 @@ public class CarInfoController implements Controller {
 		}
 		request.setAttribute("temp", temp);
 		request.setAttribute("bean", bean);
-		request.setAttribute("center", "rentcar/rentcarInfo.jsp");
+//		request.setAttribute("center", "rentcar/rentcarInfo.jsp");
 		
-		return "rentcar/rentcarInfo";
+		return "/rentcar/rentcarInfo";
 	}
 
 }
