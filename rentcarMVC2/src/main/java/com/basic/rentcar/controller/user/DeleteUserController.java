@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.UserDAO;
 import com.basic.rentcar.frontController.Controller;
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
 
 public class DeleteUserController implements Controller{
 
@@ -18,7 +18,7 @@ public class DeleteUserController implements Controller{
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("log")==null || "admin".equals((String)session.getAttribute("log"))) {
-			DBUtil.alert(response, "잘못된 접근입니다.");
+			Util.alert(response, "잘못된 접근입니다.");
 			return null;
 		}
 		String id = (String)session.getAttribute("log");
@@ -28,10 +28,10 @@ public class DeleteUserController implements Controller{
 			if(session.getAttribute("admin")==null) {
 				session.invalidate();
 			}
-			DBUtil.alert(response, "회원탈퇴가 완료되었습니다", "/main.do");
+			Util.alert(response, "회원탈퇴가 완료되었습니다", "/main.do");
 			return null;
 		}else {
-			DBUtil.alert(response, "회원탈퇴 실패");
+			Util.alert(response, "회원탈퇴 실패");
 			return null;
 		}
 	}

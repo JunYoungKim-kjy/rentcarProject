@@ -2,6 +2,3 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../parts/header.jsp" %>
 <%@ include file="../parts/footer.jsp" %>
-
-</body>
-</html>

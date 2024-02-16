@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
 import com.basic.rentcar.vo.RentcarVO;
 
 
@@ -23,7 +23,7 @@ public class RentCarDAO {
 	public int uploadImg(int no, String sFileName,String oFileName) {
 		int cnt = 0;
 		String sql = "UPDATE rentcar set sFileName=?,oFileName=? WHERE no=?";
-		conn = DBUtil.getConnection();
+		conn = Util.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, sFileName);
@@ -33,14 +33,14 @@ public class RentCarDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.dbclose(conn, pstmt, rs);
+			Util.dbclose(conn, pstmt, rs);
 		}
 		return cnt;
 	}
 	public int updateCar(RentcarVO vo) {
 		int cnt=0;
 		String sql = "UPDATE rentcar set name=?,category=?,price=?,usepeople=?,total_qty=?,company=?,img=?,info=? WHERE no=?";
-		conn = DBUtil.getConnection();
+		conn = Util.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getName());
@@ -57,7 +57,7 @@ public class RentCarDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.dbclose(conn, pstmt, rs);
+			Util.dbclose(conn, pstmt, rs);
 		}
 		
 		return cnt;
@@ -66,7 +66,7 @@ public class RentCarDAO {
 	public RentcarVO getOneCar(int no) {
 		RentcarVO bean = new RentcarVO();
 		String sql = "SELECT * FROM rentcar WHERE no=?";
-		conn = DBUtil.getConnection();
+		conn = Util.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
@@ -89,13 +89,13 @@ public class RentCarDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.dbclose(conn,pstmt,rs);
+			Util.dbclose(conn,pstmt,rs);
 		}
 		return bean;
 	}
 	public int insertCar(RentcarVO vo) {
 		String sql="INSERT INTO rentcar VALUES (null,?,?,?,?,?,?,?,?,?,?)";
-		conn = DBUtil.getConnection();
+		conn = Util.getConnection();
 		int cnt = 0;
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -113,14 +113,14 @@ public class RentCarDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.dbclose(conn,pstmt,rs);
+			Util.dbclose(conn,pstmt,rs);
 		}
 		return cnt;
 	}
 	public ArrayList<RentcarVO> getCategoryCar(int cate) {
 		ArrayList<RentcarVO> v = new ArrayList<>();
 		RentcarVO bean = null;
-		conn = DBUtil.getConnection();
+		conn = Util.getConnection();
 		try {
 			String sql = "SELECT * FROM rentcar WHERE category=?";
 			pstmt = conn.prepareStatement(sql);
@@ -144,14 +144,14 @@ public class RentCarDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.dbclose(conn,pstmt,rs);
+			Util.dbclose(conn,pstmt,rs);
 		}
 		return v;
 	}
 	public ArrayList<RentcarVO> getAllCar() {
 		ArrayList<RentcarVO> v = new ArrayList<>();
 		RentcarVO bean = null;
-		conn = DBUtil.getConnection();
+		conn = Util.getConnection();
 		try {
 			String sql = "SELECT * FROM rentcar";
 			pstmt = conn.prepareStatement(sql);
@@ -174,7 +174,7 @@ public class RentCarDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.dbclose(conn,pstmt,rs);
+			Util.dbclose(conn,pstmt,rs);
 		}
 		return v;
 	}
@@ -184,7 +184,7 @@ public class RentCarDAO {
 
 		try {
 			
-			conn = DBUtil.getConnection();
+			conn = Util.getConnection();
 
 			String sql = "SELECT * FROM rentcar ORDER BY no DESC";
 			// String sql = "SELECT * FROM rentcar ORDER BY no DESC LIMIT 3";
@@ -217,7 +217,7 @@ public class RentCarDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.dbclose(conn,pstmt,rs);
+			Util.dbclose(conn,pstmt,rs);
 		}
 
 		return v;

@@ -14,15 +14,17 @@
 	<hr size="3" color="#eeeeee">
 	</div>
 	<!-- ================================================== -->
-	<div id="center">
+	<div id= <c:if test="${temp eq null }">"slide_center"</c:if>
+			<c:if test="${temp ne null }">"center"</c:if>
+	>
 	<c:if test="${temp eq null}">
-			<font size="6" color="black">신차 리스트</font>
+			<h3 style="color:white;" class="carTitle">신차 리스트</h3>
 	</c:if>
 	<c:if test="${temp ne null and temp ne 'all' }">
-			<font size="6" color="black">${temp} 자동차</font>
+			<h3 style="color:white;" class="carTitle">${temp} 자동차</h3>
 	</c:if>
 	<c:if test="${temp eq 'all'}">
-			<font size="6" color="black">전체 렌트카 보기</font>
+			<h3 style="color:white;" class="carTitle">전체 렌트카 보기</h3>
 	</c:if>
 		<!-- 기본 최신순 일 때 -->
 			<c:if test="${temp eq null}">
@@ -40,42 +42,42 @@
 					<table>
 						<tr align="center">
 							<td>
-								<font size="3" color="black"><b>차량명</b></font>
+								<font size="3" color="white"><b>차량명</b></font>
 							</td>
 							<td>
-								<font size="3" color="black"><b>|  ${vo.name }</b></font>
-							</td>
-						</tr>
-						<tr align="center">
-							<td>
-								<font size="3" color="black"><b>차종</b></font>
-							</td>
-							<td>
-								<font size="3" color="black"><b>|  ${vo.category == 1 ? "소형" : vo.category==2 ? "중형" : "대형" }</b></font>
+								<font size="3" color="white"><b>|  ${vo.name }</b></font>
 							</td>
 						</tr>
 						<tr align="center">
 							<td>
-								<font size="3" color="black"><b>제조사</b></font>
+								<font size="3" color="white"><b>차종</b></font>
 							</td>
 							<td>
-								<font size="3" color="black"><b>|  ${vo.company}</b></font>
-							</td>
-						</tr>
-						<tr align="center">
-							<td>
-								<font size="3" color="black"><b>인승</b></font>
-							</td>
-							<td>
-								<font size="3" color="black"><b>|  ${vo.usepeople}</b></font>
+								<font size="3" color="white"><b>|  ${vo.category == 1 ? "소형" : vo.category==2 ? "중형" : "대형" }</b></font>
 							</td>
 						</tr>
 						<tr align="center">
 							<td>
-								<font size="3" color="black"><b>남은차량</b></font>
+								<font size="3" color="white"><b>제조사</b></font>
 							</td>
 							<td>
-								<font size="3" color="black"><b>|  ${vo.totalQty}</b></font>
+								<font size="3" color="white"><b>|  ${vo.company}</b></font>
+							</td>
+						</tr>
+						<tr align="center">
+							<td>
+								<font size="3" color="white"><b>인승</b></font>
+							</td>
+							<td>
+								<font size="3" color="white"><b>|  ${vo.usepeople}</b></font>
+							</td>
+						</tr>
+						<tr align="center">
+							<td>
+								<font size="3" color="white"><b>남은차량</b></font>
+							</td>
+							<td>
+								<font size="3" color="white"><b>|  ${vo.totalQty}</b></font>
 							</td>
 						</tr>
 					</table>
@@ -97,7 +99,7 @@
 				    			<img src="img/ready.jpg" width="350" height="220" />
 				    		</c:if>
 						</a>
-						<p><font size="3" color="black"><b>차량명 | ${vo.name }</b></font>
+						<p><font size="3" color="white"><b>차량명 | ${vo.name }</b></font>
 						</div>
 					</c:forEach>
 				</div>

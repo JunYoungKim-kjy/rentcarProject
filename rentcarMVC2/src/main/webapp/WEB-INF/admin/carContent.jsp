@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../parts/header.jsp" %>
-<table>
-	<tr>
-		<h2>${vo.name }차량 정보</h2>
-	</tr>
-</table>
+<div id="container">
+	<h3 style="color:white;" class="carTitle">${vo.name }차량 정보</h3>
 <form action="${ctx}/carUpdate.do" method="post">
 <input type="hidden" name="no" value="${vo.no}"/>
 <input type="hidden" name="sFileName" value="${vo.sFileName}"/>
@@ -82,9 +79,8 @@
   	<input id="uploadFile" type="file" name="uploadFile" accept="image/*" />
   	<input type="hidden" id="no" name="no" value="${vo.no}"/>
 </form>
-
-</body>
-</html>
+<%@ include file="../parts/footer.jsp" %>
+</div>
 
 <script>
 let uploadBtn = document.querySelector("#uploadBtn");//업로드버튼
@@ -149,4 +145,3 @@ deleteBtn.addEventListener("click",()=>{
 	    });
 });
 </script>
-<%@ include file="../parts/footer.jsp" %>

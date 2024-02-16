@@ -5,22 +5,22 @@
 	box-sizing: border-box;
 	text-align: center;
 }
-
 html, body {
    width: 100%;
    height: 100%;
 } 
+
 body {
   align-items: center;
   background-color: #e9e9e9;
-  background: url("../img/pexels-torsten-dettlaff-70912.jpg");
+  background: url("../img/pxfuel.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  display: grid;
+  /* display: grid; */
   height: 100vh;
-  place-items: center;
+  /* place-items: center; */
 }
 #container{
 	display:flex;
@@ -28,8 +28,6 @@ body {
 	align-items: center;
 	justify-content: center;
 }
-
-
 header div :hover{
 	/* background: gray; */
 	color: white;
@@ -41,9 +39,59 @@ input {
 .left{
 	text-align: left;
 }
+.carTitle{
+	margin: 20px auto;
+	font-size: 30px;
+	color : white;
+}
+#user_center{
+	width : 500px;
+	border : 5px solid white;
+	border-radius : 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.userTitle{
+	color : white;
+}
+#center{
+	width: 1200px;
+	background-color: rgba(255, 255, 255, 0.2);
+	margin-top: 10px;
+	border : 2px solid white;
+	border-radius : 30px;
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+	justify-content: center;
+}
+.word{
+	color:white;
+	font-weight: 400;
+}
 tr{
 	border: 1px solid black;
 }
+.btn{
+	padding: 10px 10px;
+	background-color: blue;
+	background-image: linear-gradient(15deg, #544546 0%, black 74%);
+	border-radius: 20px;
+	border: 1px solid rgba(255,255,255, 0.2);
+	color : white;
+	cursor : pointer;
+}
+hr{
+	margin-top: 20px;
+	width : 100%;
+}
+/* footer{
+	position: relative;
+	bottom: 1%;
+	
+} */
 .footer{
 	color : white;
 }

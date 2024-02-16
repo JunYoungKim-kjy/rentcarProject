@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.dao.ReservationDAO;
 import com.basic.rentcar.frontController.Controller;
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
 import com.basic.rentcar.vo.RentcarVO;
 import com.basic.rentcar.vo.ReservationVO;
 
@@ -26,7 +26,7 @@ public class ReservateCarController implements Controller {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("log")==null) {
 			System.out.println("[로그인 후 예약 가능]");
-			DBUtil.alert(response, "로그인 후 이용 가능합니다","/rentcarLogin.do");
+			Util.alert(response, "로그인 후 이용 가능합니다","/rentcarLogin.do");
 			return null;
 		}
 		String rday = request.getParameter("rday");
@@ -52,7 +52,7 @@ public class ReservateCarController implements Controller {
 	 	// System.out.println(compare);
 	 	if(compare <= 0){
 	 		// 오늘보다 이전 날짜를 선택했을 시
-	 		DBUtil.alert(response, "당일기준 다음날 부터 예약 가능합니다.");
+	 		Util.alert(response, "당일기준 다음날 부터 예약 가능합니다.");
 	 		return null;
 			/*
 			 * <script type="text/javascript"> alert("현재 시스템 날짜보다 이전 날짜는 선택할 수 없음");
@@ -64,13 +64,15 @@ public class ReservateCarController implements Controller {
 	 	String id = (String)session.getAttribute("log");
 	 	int qty = Integer.parseInt(request.getParameter("qty"));
 	 	int dday = Integer.parseInt(request.getParameter("dday"));
-	 	int usein = Integer.parseInt(request.getParameter("usein"));
-	 	int usewifi = Integer.parseInt(request.getParameter("usewifi"));
-	 	int usenavi = Integer.parseInt(request.getParameter("usenavi"));
-	 	int useseat = Integer.parseInt(request.getParameter("useseat"));
+	 	int usein = Integer.parseInt(request.getParameter("usein"))==2?0:1;
+	 	int usewifi = Integer.parseInt(request.getParameter("usewifi"))==2?0:1;
+	 	int usenavi = Integer.parseInt(request.getParameter("usenavi"))==2?0:1;
+	 	int useseat = Integer.parseInt(request.getParameter("useseat"))==2?0:1;
 	 	ReservationVO rbean = new ReservationVO(no, id, qty, dday, rday, usein, usewifi, usenavi, useseat);
 	 	ReservationDAO.getInstance().setReserveCar(rbean);
 	 	RentcarVO bean = RentCarDAO.getInstance().getOneCar(no);
+	 	String sFileName = bean.getsFileName();
+	 	System.out.println(sFileName);
 	  	// 선택 시(1), 10,000원 추가
 	  	if(usein == 1)usein = 10000; 
 	  	else usein=0;
@@ -91,7 +93,6 @@ public class ReservateCarController implements Controller {
 		request.setAttribute("useseat", useseat);
 		request.setAttribute("totalOption", totalOption);
 		request.setAttribute("bean", bean);
-//		request.setAttribute("center", "rentcar/registerCar.jsp");
 		return "/rentcar/registerCar";
 	}
 

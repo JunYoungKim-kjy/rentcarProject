@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
 import com.basic.rentcar.vo.RentcarVO;
 
 public class AdminCarListController implements Controller{
@@ -20,12 +20,11 @@ public class AdminCarListController implements Controller{
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("admin")==null) {
-			DBUtil.alert(response, "잘못된 접근입니다.", "/main.do");
+			Util.alert(response, "잘못된 접근입니다.", "/main.do");
 			return null;
 		}
 		ArrayList<RentcarVO> list = null;
 		list = RentCarDAO.getInstance().getAllCar();
-//		request.setAttribute("center", "admin/carList.jsp");
 		request.setAttribute("list", list);
 		return "/admin/carList";
 	}

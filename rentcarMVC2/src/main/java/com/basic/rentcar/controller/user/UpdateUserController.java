@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.UserDAO;
 import com.basic.rentcar.frontController.Controller;
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
 import com.basic.rentcar.vo.UserVO;
 
 public class UpdateUserController implements Controller{
@@ -24,6 +24,7 @@ public class UpdateUserController implements Controller{
 	
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("log"); 
+		String pw = request.getParameter("pw");
 		String age = request.getParameter("age");//필수
 		String job = request.getParameter("job");
 		String hobby = request.getParameter("hobby");
@@ -32,6 +33,7 @@ public class UpdateUserController implements Controller{
 		String info = request.getParameter("info");
 		UserVO vo = new UserVO();
 		vo.setId(id);
+		vo.setPw(pw);
 		vo.setAge(age);
 		vo.setJob(job);
 		vo.setHobby(hobby);
@@ -49,10 +51,10 @@ public class UpdateUserController implements Controller{
 		System.out.println(vo.getInfo());
 		int check = UserDAO.getInstance().userUpdate(vo);
 		if(check > 0) {
-			DBUtil.alert(response, "회원정보 수정 완료","/main.do");
+			Util.alert(response, "회원정보 수정 완료","/main.do");
 			return null;
 		}else {
-			DBUtil.alert(response, "회원정보 수정 실패");
+			Util.alert(response, "회원정보 수정 실패");
 			return null;
 		}
 	}

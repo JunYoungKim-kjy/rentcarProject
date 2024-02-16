@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
 import com.basic.rentcar.vo.RentcarVO;
 
 public class AdminCarUpdateController implements Controller {
@@ -30,10 +30,10 @@ public class AdminCarUpdateController implements Controller {
 		int check = RentCarDAO.getInstance().updateCar(vo);
 		System.out.println("기도");
 		if(check > 0) {
-			DBUtil.alert(response, "업로드 성공", "/adminCarList.do");
+			Util.alert(response, "업로드 성공", "/adminCarList.do");
 			return null;
 		}else {
-			DBUtil.alert(response, "업로드 실패");
+			Util.alert(response, "업로드 실패");
 			return null;
 		}
 	}

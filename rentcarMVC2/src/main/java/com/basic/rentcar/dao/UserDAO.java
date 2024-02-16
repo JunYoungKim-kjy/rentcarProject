@@ -6,7 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
+import com.basic.rentcar.vo.ReservationVO;
 import com.basic.rentcar.vo.UserVO;
 
 
@@ -25,23 +26,48 @@ public class UserDAO {
 	public int userDelete(String id) {
 		String sql = "DELETE FROM member WHERE id =?";
 		int cnt = 0;
-		conn = DBUtil.getConnection();
+		if(id.equals("admin"))return cnt;
+		conn = Util.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			cnt = pstmt.executeUpdate();
-			System.out.println("[삭제 완료]");
+			if(cnt > 0) {
+				delReservationVO(id);
+				System.out.println("[삭제 완료]");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("[삭제 실패]");
 		}  finally {
-			DBUtil.dbclose(conn,pstmt,rs);
+			Util.dbclose(conn,pstmt,rs);
 		}
 		return cnt;
 	}
+	private void delReservationVO(String id) {
+		String sql = "select reserve_seq, no , qty from carreserve where id=?";
+		Util.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			ReservationVO reservationVO = null;
+			while(rs.next()) {
+				reservationVO = new ReservationVO();
+				reservationVO.setNo(rs.getInt("no"));
+				reservationVO.setQty(rs.getInt("qty"));
+				reservationVO.setReserveSeq(rs.getInt("reserve_seq"));
+				ReservationDAO.getInstance().carRemoveReserve(reservationVO.getReserveSeq(),reservationVO.getQty(),reservationVO.getNo());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Util.dbclose(conn, pstmt, rs);
+		}
+	}
 	public UserVO getVO(String id) {
 		String sql = "SELECT * FROM member where id=?";
-		conn = DBUtil.getConnection();
+		conn = Util.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -62,13 +88,13 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.dbclose(conn,pstmt,rs);
+			Util.dbclose(conn,pstmt,rs);
 		}
 		return null;
 	}
 	public String checkId(String id) {
 		String sql = "select pw from member where id = ?";
-		conn = DBUtil.getConnection();
+		conn = Util.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -79,13 +105,13 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.dbclose(conn,pstmt,rs);
+			Util.dbclose(conn,pstmt,rs);
 		}
 		return null;
 	}
 	public boolean validate(String id) {
 		String sql = "select id from member where id=?";
-		conn = DBUtil.getConnection();
+		conn = Util.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -94,13 +120,13 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.dbclose(conn,pstmt,rs);
+			Util.dbclose(conn,pstmt,rs);
 		}
 		return false;
 	}
 	public int userUpdate(UserVO vo) {
 		   String SQL="update member set age=?, email=?, tel=?, job=?,hobby=?,info=? where id=?";
-		   conn = DBUtil.getConnection();
+		   conn = Util.getConnection();
 		   int cnt=0;
 		   try {
 		   	pstmt=conn.prepareStatement(SQL);
@@ -117,13 +143,14 @@ public class UserDAO {
 			e.printStackTrace();
 			System.out.println("[회원수정 실패]");
 		}finally {
-			DBUtil.dbclose(conn,pstmt,rs);
+			Util.dbclose(conn,pstmt,rs);
 		}	   
 		   return cnt;
 	}
 	public int joinUser(UserVO user) {
-		String sql = "INSERT INTO member VALUES(null,?,?,?,?,?,?,?,?)";
-		conn = DBUtil.getConnection();
+		String sql = "INSERT INTO member VALUES(null,?,?,?,?,?,?,?,?,?)";
+		conn = Util.getConnection();
+		System.out.println("user = "+ user);
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, user.getId());
@@ -134,13 +161,14 @@ public class UserDAO {
 			pstmt.setString(6, user.getJob());
 			pstmt.setString(7, user.getAge());
 			pstmt.setString(8, user.getInfo());
+			pstmt.setString(9, user.getName());
 			System.out.println("[회원가입 성공]");
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("[회원가입 실패]");
 			e.printStackTrace();
 		} finally {
-			DBUtil.dbclose(conn,pstmt,rs);
+			Util.dbclose(conn,pstmt,rs);
 		}
 		return 0;
 	}

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletResponse;
 
-public class DBUtil {
+public class Util {
 	public static Connection getConnection() {
 		Connection conn = null;
 		String dbURL = "jdbc:mysql://localhost:3306/rentcardb01?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
@@ -43,7 +43,7 @@ public class DBUtil {
 			e.printStackTrace();
 	    }
 	}
-	//알림창 후 로그인
+	//알림창 후 url
 	public static void alert(HttpServletResponse response, String msg, String url) {
 	    try {
 			response.setContentType("text/html; charset=utf-8");

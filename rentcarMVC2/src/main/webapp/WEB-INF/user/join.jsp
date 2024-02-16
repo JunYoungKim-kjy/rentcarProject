@@ -69,11 +69,4 @@ input[type=submit], input[type=reset] {
 			</tr> 
 		</table>
 	</form>
-	
-
-</body>
-</html>
-
-
-
 <%@ include file="../parts/footer.jsp" %>

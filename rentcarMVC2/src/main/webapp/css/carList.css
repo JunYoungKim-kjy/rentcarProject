@@ -6,6 +6,7 @@
 #category{
 	display: flex;
 	align-items: left;
+	margin-top: 20px;
 }
 #category>a{
 	margin: 0 10px 0 0;
@@ -23,9 +24,11 @@
 #category>a:active{
   color : red;
 }
-#center{
+#slide_center{
 	width: 1200px;
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 50px;
+	margin-top: 10px;
 }
 .autoplay{
 	display: flex;

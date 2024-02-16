@@ -7,4 +7,3 @@
 <script type="text/javascript" defer src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" defer src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <link rel="stylesheet" type="text/css" href="${ctx}/css/style.css">
-<link rel="stylesheet" type="text/css" href="${ctx}/css/car.css">

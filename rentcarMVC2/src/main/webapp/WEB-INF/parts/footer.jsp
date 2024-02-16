@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <footer>
 	<hr color="red" size="3">
 	<p class="footer">
 				이용약관
@@ -13,5 +14,6 @@
 				웹접근성 도움말<br />
 				배드민턴단
 				COPYRIGHTⓒ2015 SAMSUNG ELECTRO-MECHANICS, All rights reserved.</p>
+    </footer>
 </body>
 </html>

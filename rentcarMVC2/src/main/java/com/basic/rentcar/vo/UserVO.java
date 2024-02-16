@@ -4,7 +4,7 @@ public class UserVO {
 	private int no;
 	private String id;
 	private String pw;
-//	private String name;
+	private String name;
 	private String email;
 	private String tel;
 	private String hobby;
@@ -16,7 +16,7 @@ public class UserVO {
 //			String info) {
 //		super();
 //		this.no = no;
-//		this.name = name;
+//		this.setName(name);
 //		this.id = id;
 //		this.pw = pw;
 //		this.email = email;
@@ -40,11 +40,12 @@ public class UserVO {
 		this.age = age;
 		this.info = info;
 	}
-	public UserVO(String id, String pw, String email, String tel, String hobby, String job, String age,
+	public UserVO(String id, String pw,String name, String email, String tel, String hobby, String job, String age,
 			String info) {
 		super();
 		this.id = id;
 		this.pw = pw;
+		this.name=name;
 		this.email = email;
 		this.tel = tel;
 		this.hobby = hobby;
@@ -110,5 +111,11 @@ public class UserVO {
 	public String toString() {
 		return "MemberVO [no=" + no + ", id=" + id + ", pw=" + pw + ", email=" + email + ", tel=" + tel + ", hobby="
 				+ hobby + ", job=" + job + ", age=" + age + ", info=" + info + "]";
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

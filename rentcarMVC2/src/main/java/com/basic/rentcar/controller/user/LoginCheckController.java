@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.UserDAO;
 import com.basic.rentcar.frontController.Controller;
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
 
 public class LoginCheckController implements Controller{
 
@@ -31,13 +31,13 @@ public class LoginCheckController implements Controller{
 		System.out.println("pw ="+ pw);
 		System.out.println("dbpw ="+ dbpw);
 		if(dbpw == null || !pw.equals(dbpw)) {
-			DBUtil.alert(response, "아이디/비밀번호를 확인해주세요");
+			Util.alert(response, "아이디/비밀번호를 확인해주세요");
 			return null;
 		}
 		HttpSession session = request.getSession();
 		session.setAttribute("log", id);
 		if(id.equals("admin"))session.setAttribute("admin", "admin");
-		DBUtil.alert(response, id+"님 반갑습니다.","/main.do");
+		Util.alert(response, id+"님 반갑습니다.","/main.do");
 		return null;
 	}
 

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
 import com.basic.rentcar.vo.RentcarVO;
 
 public class CarInfoController implements Controller {
@@ -24,8 +24,7 @@ public class CarInfoController implements Controller {
 		int no = Integer.parseInt(request.getParameter("no"));
 		RentcarVO bean = RentCarDAO.getInstance().getOneCar(no);
 		if(bean.getTotalQty() == 0) {
-			DBUtil.alert(response, "이 차량은 모두 대여중입니다.");
-			System.out.println("이 차랑은 모두 대여 중입니다");
+			Util.alert(response, "이 차량은 모두 대여중입니다.");
 			return null;
 		}
 		int cateNum = bean.getCategory();
@@ -37,8 +36,6 @@ public class CarInfoController implements Controller {
 		}
 		request.setAttribute("temp", temp);
 		request.setAttribute("bean", bean);
-//		request.setAttribute("center", "rentcar/rentcarInfo.jsp");
-		
 		return "/rentcar/rentcarInfo";
 	}
 

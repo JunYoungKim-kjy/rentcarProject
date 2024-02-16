@@ -11,7 +11,7 @@ public class ReservationVO {
 	private int usewifi;			
 	private int usenavi;
 	private int useseat;
-	
+	public ReservationVO() {}
 	public ReservationVO( int no, String id, int qty, int dday, String rday, int usein, int usewifi,
 			int usenavi, int useseat) {
 		super();

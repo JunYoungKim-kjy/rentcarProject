@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
 import com.basic.rentcar.vo.RentcarVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -55,10 +55,10 @@ public class InsertCarController implements Controller{
 		RentcarVO vo = new RentcarVO(name, category, price, usepeople, totalQty, company, sFileName, info, sFileName, oFileName);
 		int check = RentCarDAO.getInstance().insertCar(vo);
 		if(check > 0) {
-			DBUtil.alert(response, "차량 등록 성공", "/adminCarList.do");
+			Util.alert(response, "차량 등록 성공", "/adminCarList.do");
 			return null;
 		}else {
-			DBUtil.alert(response, "차량 등록 실패");
+			Util.alert(response, "차량 등록 실패");
 			return null;
 		}
 	}

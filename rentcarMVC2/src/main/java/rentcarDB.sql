@@ -21,8 +21,9 @@ ALTER TABLE rentcar ADD COLUMN oFileName VARCHAR(50);
 -- member 테이블 생성
 CREATE TABLE member(
 	no INT auto_increment primary key, -- 고객 정보
-	id VARCHAR(20), 
-    pw VARCHAR(20), 
+	id VARCHAR(20) not null, 
+    pw VARCHAR(20) not null, 
+    name VARCHAR(20),
     email VARCHAR(50), 
     tel VARCHAR(20),
     hobby VARCHAR(60),
@@ -30,8 +31,9 @@ CREATE TABLE member(
     age VARCHAR(10),
     info VARCHAR(500)
 );
+ALTER TABLE member ADD COLUMN id VARCHAR(20) not null;
 update member set age='21', email='qwer@daum.com', tel='010-2343', job='개발자',hobby='스포츠',info='반갑습니다' where no=1
-
+DESC member;
 CREATE TABLE carreserve(
 	reserve_seq INT auto_increment primary key,  -- 차량 예약 정보 번호
     no INT, -- 렌트카 고유 번호 
@@ -79,6 +81,7 @@ SELECT * FROM rentcar ORDER BY no DESC LIMIT 3;
 select count(*) from member where id = 'qwer' and pw='1234';
 select * from rentcar a2 ,carreserve a1  where a1.id = 'qwer' and curdate() < date_format(a1.rday , '%y-%m-%d') and a1.no = a2.no;
 select * from rentcar a2 ,carreserve a1  where a1.id = 'qwer' and a1.no = a2.no;
+select * from rentcar a2 ,carreserve a1  where a1.no = a2.no;
 select * from member where id = 'qwer'
 SELECT * FROM rentcar WHERE no=18;
 INSERT INTO carreserve( no, id, qty, dday, rday, usein, usewifi, usenavi, useseat) VALUES( 1,'qwer',3, 4, sysdate() ,1,0,0,0);
@@ -86,5 +89,7 @@ update rentcar set total_qty =total_qty - 3 where no = 1;
 update rentcar set total_qty =total_qty + 3 where n = 1;
 update member set pw ="ggrd" where no = 6;
 
+select no , qty from carreserve where id='qwer'
 select * from rentcar a2 ,carreserve a1  where a1.id = 'qwer' and a1.no = a2.no;
 select * from rentcar a2 ,carreserve a1  where a1.no = a2.no;
+select * , m.name as "username"  from rentcar a2 ,carreserve a1 , member m where a1.no = a2.no and a1.id = m.id

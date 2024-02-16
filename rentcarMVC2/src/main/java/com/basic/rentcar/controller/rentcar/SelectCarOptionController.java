@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
 import com.basic.rentcar.vo.RentcarVO;
 
 public class SelectCarOptionController implements Controller{
@@ -19,7 +19,7 @@ public class SelectCarOptionController implements Controller{
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("log")==null) {
-			DBUtil.alert(response, "로그인 후 이용 가능합니다","/rentcarLogin.do");
+			Util.alert(response, "로그인 후 이용 가능합니다","/rentcarLogin.do");
 			return null;
 		}
 		int no = Integer.parseInt(request.getParameter("no"));
@@ -28,7 +28,6 @@ public class SelectCarOptionController implements Controller{
 		
 		request.setAttribute("bean", bean);
 		request.setAttribute("qty", qty);
-//		request.setAttribute("center", "rentcar/carOption.jsp");
 		return "/rentcar/carOption";
 	}
 

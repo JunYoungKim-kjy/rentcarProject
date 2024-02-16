@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
 import com.basic.rentcar.vo.RentcarVO;
 
 public class AdminCarContentController implements Controller{
@@ -19,7 +19,7 @@ public class AdminCarContentController implements Controller{
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("admin")==null) {
-			DBUtil.alert(response, "잘못된 접근입니다.", "/main.do");
+			Util.alert(response, "잘못된 접근입니다.", "/main.do");
 			return null;
 		}
 		int no = Integer.parseInt(request.getParameter("no"));

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.basic.rentcar.dao.UserDAO;
 import com.basic.rentcar.frontController.Controller;
-import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.util.Util;
 import com.basic.rentcar.vo.UserVO;
 
 
@@ -20,8 +20,7 @@ public class JoinUserController implements Controller{
 		String ctx = request.getContextPath();
 		System.out.println("id 2 ="+request.getParameter("id"));
 		if(request.getParameter("id")==null) {
-			request.setAttribute("center", "user/join.jsp");
-			return "user/join";
+			return "user/login.jsp";
 		}
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
@@ -32,13 +31,14 @@ public class JoinUserController implements Controller{
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		String info = request.getParameter("info");
-		UserVO vo = new UserVO(id, pw, email, phone, hobby, job, age, info);
+		UserVO vo = new UserVO(id, pw, name, email, phone, hobby, job, age, info);
+		System.out.println("vo = "+vo);
 		int check = UserDAO.getInstance().joinUser(vo);
 		if(check > 0) {
-			DBUtil.alert(response, "회원가입 완료","/main.do");
+			Util.alert(response, "회원가입 완료","/main.do");
 			return null;
 		}else {
-			DBUtil.alert(response, "회원가입 실패");
+			Util.alert(response, "회원가입 실패");
 			return null;
 		}
 	}

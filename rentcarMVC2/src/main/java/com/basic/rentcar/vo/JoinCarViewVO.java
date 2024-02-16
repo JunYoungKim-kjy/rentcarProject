@@ -1,9 +1,11 @@
 package com.basic.rentcar.vo;
 
 public class JoinCarViewVO {
-	private int reserveSeq;	
+	private int reserveSeq;
 	private int no; // car no 
+	private String id;
 	private String name;
+	private String userName;
 	private int price;
 	private String img;
 	private int qty;
@@ -106,5 +108,17 @@ public class JoinCarViewVO {
 		return "CarViewVO [reserveSeq=" + reserveSeq + ", no=" + no + ", name=" + name + ", price=" + price + ", img="
 				+ img + ", qty=" + qty + ", dday=" + dday + ", rday=" + rday + ", usein=" + usein + ", usewifi="
 				+ usewifi + ", useseat=" + useseat + ", usenavi=" + usenavi + "]";
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 }
