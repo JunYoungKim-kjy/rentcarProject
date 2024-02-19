@@ -1,13 +1,14 @@
-
-function fileview(event){
-	 let fr = new FileReader();
+function setThumbnail(event) {
+	let fr = new FileReader();
 	 
-	 fr.onload = event => {
-		 let img = document.getElementById("fileview");
-		 img.setAttribute("src",event.target.result);
-	 }
-	 fr.readAsDataURL(event.target.files[0]);
+	fr.onload = event => {
+		let img = document.getElementById("fileview");
+	 	img.setAttribute("src",event.target.result);
+	}
+	fr.readAsDataURL(event.target.files[0]);
 }
+
+
 function check(form){
 	if(!form.name.value.trim()){
 		alert("차량의이름을 입력해주세요");

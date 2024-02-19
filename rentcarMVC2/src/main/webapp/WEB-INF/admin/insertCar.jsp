@@ -10,7 +10,7 @@
 				<tr>
 					<td colspan="2">
 					<img src="img/ready.jpg" id="fileview" width="350" id="photo"/>
-					<input id="uploadFile" type="file" name="uploadFile" accept="image/*" onchange="fileview(event);"/>
+					<input id="uploadFile" type="file" name="uploadFile" accept="image/*" onchange="setThumbnail(event)"/>
 					</td>
 				</tr>
 				<tr>
