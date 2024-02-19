@@ -2,85 +2,85 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../parts/header.jsp" %>
 <div id="container">
+	<div id="center">
 	<h3 style="color:white;" class="carTitle">${vo.name }차량 정보</h3>
-<form action="${ctx}/carUpdate.do" method="post">
-<input type="hidden" name="no" value="${vo.no}"/>
-<input type="hidden" name="sFileName" value="${vo.sFileName}"/>
-<table border="1">
-	<tr>
-		<td>번호</td>
-		<td>${vo.no }</td>
-	</tr>
-	<tr>
-		<td>이름</td>
-		<td><input name="name" id="name" value="${vo.name}"></td>
-	</tr>
-	<tr>
-		<td>차종</td>
-		<td>
-			<select name="category" id="category">
-				<option value="">--차종을 선택해 주세요--</option>
-  				<option value="1" <c:if test="${vo.category == 1}">selected</c:if> >소형</option>
-  				<option value="2" <c:if test="${vo.category == 2}">selected</c:if>>중형</option>
-  				<option value="3" <c:if test="${vo.category == 3}">selected</c:if>>대형</option>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td>가격</td>
-		<td><input name="price" id="price" value="${vo.price}"></td>
-	</tr>
-	<tr>
-		<td>인승</td>
-		<td>
-			<select name="usepeople" id="usepeople" required>
-				<option value="">--인승을 선택해 주세요--</option>
-				<c:forEach var="i" begin="1" end="12">
-					<option value="${i}" <c:if test="${vo.usepeople == i }">selected</c:if> > ${i} </option>
-				</c:forEach>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td>차량대수</td>
-		<td><input name="totalQty" id="totalQty" value="${vo.totalQty}"></td>
-	</tr>
-	<tr>
-		<td>제조사</td>
-		<td><input name="company" id="company" value="${vo.company}"></td>
-	</tr>
-	<tr>
-		<td>차량이미지</td>
-		<td>
-	    	<c:if test="${vo.sFileName ne null}">
-	    		<img src="Uploads/${vo.sFileName}" id="photo" width="100" height="100"/>
-	    	</c:if>
-	    	<c:if test="${vo.sFileName eq null}">
-	    		<img src="img/ready.jpg" width="100" height="100"  class="default" id="photo"/>
-	    	</c:if>
+	<form action="${ctx}/carUpdate.do" method="post">
+	<input type="hidden" name="no" value="${vo.no}"/>
+	<input type="hidden" name="sFileName" value="${vo.sFileName}"/>
+	<table border="1">
+		<tr>
+			<td class="word">번호</td>
+			<td class="word">${vo.no }</td>
+		</tr>
+		<tr>
+			<td class="word">이름</td>
+			<td><input name="name" id="name" value="${vo.name}"></td>
+		</tr>
+		<tr>
+			<td class="word">차종</td>
+			<td>
+				<select name="category" id="category">
+					<option value="">--차종을 선택해 주세요--</option>
+	  				<option value="1" <c:if test="${vo.category == 1}">selected</c:if> >소형</option>
+	  				<option value="2" <c:if test="${vo.category == 2}">selected</c:if>>중형</option>
+	  				<option value="3" <c:if test="${vo.category == 3}">selected</c:if>>대형</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="word">가격</td>
+			<td><input name="price" id="price" value="${vo.price}"></td>
+		</tr>
+		<tr>
+			<td class="word">인승</td>
+			<td>
+				<select name="usepeople" id="usepeople" required>
+					<option value="">--인승을 선택해 주세요--</option>
+					<c:forEach var="i" begin="1" end="12">
+						<option value="${i}" <c:if test="${vo.usepeople == i }">selected</c:if> > ${i} </option>
+					</c:forEach>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="word">차량대수</td>
+			<td><input name="totalQty" id="totalQty" value="${vo.totalQty}"></td>
+		</tr>
+		<tr>
+			<td class="word">제조사</td>
+			<td><input name="company" id="company" value="${vo.company}"></td>
+		</tr>
+		<tr>
+			<td class="word">차량이미지</td>
+			<td>
+		    	<c:if test="${vo.sFileName ne null}">
+		    		<img src="Uploads/${vo.sFileName}" id="photo" width="100" height="100"/>
+		    	</c:if>
+		    	<c:if test="${vo.sFileName eq null}">
+		    		<img src="img/ready.jpg" width="100" height="100"  class="default" id="photo"/>
+		    	</c:if>
+		    </td>
+		</tr>
+		<tr>
+			<td class="word">차량정보</td>
+			<td><input name="info" id="info" value="${vo.info}"></td>
+		</tr>
+		<tr>
+	    <td colspan="2" align="center">
+			<!-- <input type="button" value="사진 업로드" class='col-3 btn btn-success' id="uploadBtn"/> --> 
+			<input type="submit" value="수정하기" class='col-3 btn btn-primary' />
+			<input type="button" value="사진 삭제" class='col-3 btn btn-warning' id="deleteBtn"/> 
 	    </td>
-	</tr>
-	<tr>
-		<td>차량정보</td>
-		<td><input name="info" id="info" value="${vo.info}"></td>
-	</tr>
-	<tr>
-    <td colspan="2" align="center">
-		<!-- <input type="button" value="사진 업로드" class='col-3 btn btn-success' id="uploadBtn"/> --> 
-		<input type="submit" value="수정하기" class='col-3 btn btn-primary' />
-		<input type="button" value="사진 삭제" class='col-3 btn btn-warning' id="deleteBtn"/> 
-    </td>
-  </tr>
-</table>
-</form>
-
-
-<form id="imgForm">
-  	<input id="uploadFile" type="file" name="uploadFile" accept="image/*" />
-  	<input type="hidden" id="no" name="no" value="${vo.no}"/>
-</form>
-<%@ include file="../parts/footer.jsp" %>
+	  </tr>
+	</table>
+	</form>
+	<form id="imgForm">
+	<input id="uploadFile" type="file" name="uploadFile" accept="image/*" />
+	<input type="hidden" id="no" name="no" value="${vo.no}"/>
+	</form>
+	</div>
 </div>
+<%@ include file="../parts/footer.jsp" %>
 
 <script>
 let uploadBtn = document.querySelector("#uploadBtn");//업로드버튼
@@ -117,7 +117,6 @@ inputImg.addEventListener("change" , ()=>{
 });
 
 deleteBtn.addEventListener("click",()=>{
-	console.log("여기도..?");
 	if(document.querySelector('.default')){
 		alert('기본이미지는 삭제 할 수 없습니다.');
 		return;

@@ -40,8 +40,10 @@ public class UploadCarImgController implements Controller{
 		}
 		System.out.println("save = "+sFileName);
 		System.out.println("origin = "+oFileName);
-		System.out.println("업로드 됨??");
 		int no = Integer.parseInt(multi.getParameter("no"));
+		if(multi.getParameter("no")==null) {
+			
+		}
 		
 		int cnt = RentCarDAO.getInstance().uploadImg(no,sFileName,oFileName);
 		

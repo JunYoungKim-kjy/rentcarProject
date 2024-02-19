@@ -35,7 +35,6 @@ public class InsertCarController implements Controller{
 		// 폼에서 전송한 파라미터의 이름을 인자로 받아서 그 파라미터의 값을 반환한다.
 		// request 객체 사용 불가.
 		// multi 객체로 대체사용
-		System.out.println("????");
 		
 		String sFileName = null;
 		String oFileName = null;
